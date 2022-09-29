@@ -160,7 +160,7 @@ void find_conjugate()
     std::cout << "The result is: \n"
               << w.print_complex_number() << "\n";
 }
-// TODO: Write program
+// TODO: Idiot proof
 int main()
 {
     bool repeat = true;
