@@ -47,29 +47,34 @@ void add_or_subtract()
         v = subtraction(z, w);
     }
 
-    std::cout << "The result is\n" << v.print_complex_number() << "\n";
+    std::cout << "The result is\n"
+              << v.print_complex_number() << "\n";
 }
 
-void multiply(){
+void multiply()
+{
     char choice;
     do
     {
         std::cout << "Multiply by (S)calar or (C)omplex number\n";
         std::cin >> choice;
     } while (choice != 'C' && choice != 'c' && choice != 'S' && choice != 's');
-    if(choice == 's' or choice == 'S'){
+    if (choice == 's' or choice == 'S')
+    {
         double scalar;
-        std::cout << "λz = λ(a+bi)\n" << "Please input Scalar λ:";
+        std::cout << "λz = λ(a+bi)\n"
+                  << "Please input Scalar λ:";
         std::cin >> scalar;
 
         std::cout << "Complex number z:\n";
         complex z = input_complex_number();
 
         complex w = multiplication(z, scalar);
-        std::cout << "The Result is\n" << w.print_complex_number() << "\n";      
+        std::cout << "The Result is\n"
+                  << w.print_complex_number() << "\n";
     }
-    else{
-        complex z, w;
+    else
+    {
         std::cout << "v = z + w\n";
 
         std::cout << "Complex number z:\n";
@@ -78,31 +83,36 @@ void multiply(){
         std::cout << "Complex number w:\n";
         complex w = input_complex_number();
 
-        complex v = multiplication(z,w);
-        std::cout << "The result is\n" << w.print_complex_number() << "\n";
+        complex v = multiplication(z, w);
+        std::cout << "The result is\n"
+                  << w.print_complex_number() << "\n";
     }
 }
 
-void divide(){
+void divide()
+{
     char choice;
     do
     {
         std::cout << "Divide by (S)calar or (C)omplex number\n";
         std::cin >> choice;
     } while (choice != 'C' && choice != 'c' && choice != 'S' && choice != 's');
-    if(choice == 's' or choice == 'S'){
+    if (choice == 's' or choice == 'S')
+    {
         double scalar;
-        std::cout << "λz = λ(a+bi)\n" << "Please input Scalar λ:";
+        std::cout << "λz = λ(a+bi)\n"
+                  << "Please input Scalar λ:";
         std::cin >> scalar;
 
         std::cout << "Complex number z:\n";
         complex z = input_complex_number();
 
         complex w = division(z, scalar);
-        std::cout << "The Result is\n" << w.print_complex_number() << "\n";      
+        std::cout << "The Result is\n"
+                  << w.print_complex_number() << "\n";
     }
-    else{
-        complex z, w;
+    else
+    {
         std::cout << "v = z + w\n";
 
         std::cout << "Complex number z:\n";
@@ -111,36 +121,99 @@ void divide(){
         std::cout << "Complex number w:\n";
         complex w = input_complex_number();
 
-        complex v = division(z,w);
-        std::cout << "The result is\n" << w.print_complex_number() << "\n";
+        complex v = division(z, w);
+        std::cout << "The result is\n"
+                  << w.print_complex_number() << "\n";
     }
 }
 
-void magnitude(){
-    std::cout << "|z| = |a+ib|\n" << "Complex number z:\n";
+void modulus()
+{
+    std::cout << "|z| = |a+ib|\n"
+              << "Complex number z:\n";
 
     complex z = input_complex_number();
 
-    std::cout << "The result is: \n" << z.magnitude() << "\n"; 
+    std::cout << "The result is: \n"
+              << z.modulus() << "\n";
 }
 
-void arguement(){
-    std::cout << "arg(z) = arg(a+ib) = arctan(a/b)\n" << "Complex numberz: \n";
+void arguement()
+{
+    std::cout << "arg(z) = arg(a+ib) = arctan(a/b)\n"
+              << "Complex number z: \n";
 
     complex z = input_complex_number();
 
-    std::cout << "The result is: \n" << z.arguement() << "\n";
-
+    std::cout << "The result is: \n"
+              << z.arguement() << "\n";
 }
 
+void find_conjugate()
+{
+    std::cout << "Z = a+ib\n"
+              << "Z* = a-ib\n"
+              << "Complex number z: \n";
+
+    complex z = input_complex_number();
+    complex w = z.conjugate();
+    std::cout << "The result is: \n"
+              << w.print_complex_number() << "\n";
+}
 // TODO: Write program
 int main()
 {
-    // bool calculate_again = true;
-    // do
-    // {
-    //     std::cout << "Do you want to (a)dd, (s)ubtract, (d)ivide or (m)ultiply\n";
-    // } while (calculate_again);
+    bool repeat = true;
+    do
+    {
+        std::string choice;
+        do
+        {
+            std::cout << "Welcome to the complex calculator\n"
+                      << "Do you want to (A)dd or (S)ubtract, (M)ultiply, (D)ivide or (O)ther \n";
+            std::cin >> choice;
+        } while (choice != "A" && choice != "a" && choice != "S" && choice != "s" && choice != "M" && choice != "m" && choice != "D" && choice != "d" && choice != "O" && choice != "o");
+        if (choice == "A" || choice == "a" || choice == "S" || choice == "s")
+        {
+            add_or_subtract();
+        }
+        else if (choice == "M" || choice == "m")
+        {
+            multiply();
+        }
+        else if (choice == "D" || choice == "d")
+        {
+            divide();
+        }
+        if (choice == "O" || choice == "o")
+        {
+            do
+            {
+                std::cout << "Do you want to find the (M)agnitude, (A)rguement or (C)omplex conjugate";
+                std::cin >> choice;
+            } while (choice != "M" && choice != "m" && choice != "A" && choice != "a" && choice != "C" && choice != "c");
 
-    add_or_subtract();
+            if (choice == "M" || choice == "m")
+            {
+                modulus();
+            }
+            else if (choice == "A" || choice == "a")
+            {
+                arguement();
+            }
+            else if (choice == "C" || choice == "c")
+            {
+                find_conjugate();
+            }
+        }
+        do
+        {
+            std::cout << "Do you want to run the calculator again\n";
+            std::cin >> choice;
+        } while (choice != "Y" && choice != "y" && choice != "N" && choice != "n");
+        if(choice == "N" || choice == "n"){
+            repeat = false;
+        }
+    } while (repeat);
+    return 0;
 }

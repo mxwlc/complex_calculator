@@ -17,7 +17,7 @@ struct complex
 
     /// @brief Magnitude of a complex number
     /// @return returns |a+ib| as a double
-    double magnitude()
+    double modulus()
     {
         double magnitude_squared = std::pow(real, 2) + std::pow(imaginary, 2);
         return std::sqrt(magnitude_squared);
@@ -30,7 +30,16 @@ struct complex
         double imaginary_over_real = imaginary / real;
         return std::atan(imaginary_over_real);
     }
+    
+    /// @brief Returns the complex conjugate z* of the complex number z
+    /// @return returns z in the form x+iy
+    complex conjugate(){
+        complex temp = complex(real, -1*imaginary);
+        return temp;
+    }
 
+    /// @brief Returns complex number in the form x+iy
+    /// @return string "x+iy"
     std::string print_complex_number(){
         return std::to_string(real) + " + " + std::to_string(imaginary) + "i";  
     }
